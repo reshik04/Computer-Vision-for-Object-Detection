@@ -1,0 +1,62 @@
+{
+  "total_records": 480,
+  "total_flights": 664085,
+  "overall_on_time_percentage": 82.71,
+  "overall_cancellation_rate": 3.12,
+  "airlines_count": 8,
+  "date_range": {
+    "start": "2020-01-01",
+    "end": "2024-12-01"
+  },
+  "airline_stats": {
+    "IndiGo": {
+      "avg_on_time_percentage": 81.35,
+      "avg_cancellation_rate": 3.24,
+      "total_records": 60
+    },
+    "SpiceJet": {
+      "avg_on_time_percentage": 82.51,
+      "avg_cancellation_rate": 3.15,
+      "total_records": 60
+    },
+    "Air India": {
+      "avg_on_time_percentage": 82.33,
+      "avg_cancellation_rate": 3.0,
+      "total_records": 60
+    },
+    "GoAir": {
+      "avg_on_time_percentage": 83.95,
+      "avg_cancellation_rate": 3.14,
+      "total_records": 60
+    },
+    "Vistara": {
+      "avg_on_time_percentage": 84.92,
+      "avg_cancellation_rate": 3.11,
+      "total_records": 60
+    },
+    "AirAsia India": {
+      "avg_on_time_percentage": 84.22,
+      "avg_cancellation_rate": 3.11,
+      "total_records": 60
+    },
+    "Alliance Air": {
+      "avg_on_time_percentage": 81.79,
+      "avg_cancellation_rate": 3.12,
+      "total_records": 60
+    },
+    "Akasa Air": {
+      "avg_on_time_percentage": 81.44,
+      "avg_cancellation_rate": 3.16,
+      "total_records": 60
+    }
+  },
+  "delay_reasons": {
+    "Operational": 71,
+    "Technical Issues": 70,
+    "Ground Handling": 76,
+    "Security": 65,
+    "Air Traffic Control": 64,
+    "Weather": 65,
+    "Crew Issues": 69
+  }
+}

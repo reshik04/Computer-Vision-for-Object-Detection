@@ -1,0 +1,524 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Indian Airline Data Dashboard</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                }
+                
+                .dashboard-header {
+                    background: linear-gradient(135deg, #007bff, #0056b3);
+                    color: white;
+                    padding: 2rem 0;
+                    margin-bottom: 2rem;
+                }
+                
+                .kpi-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 1.5rem;
+                    margin-bottom: 2rem;
+                }
+                
+                .kpi-card {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    border-left: 4px solid #007bff;
+                    transition: transform 0.2s;
+                }
+                
+                .kpi-card:hover {
+                    transform: translateY(-2px);
+                }
+                
+                .kpi-value {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: #007bff;
+                    margin: 0.5rem 0;
+                }
+                
+                .kpi-title {
+                    font-size: 1rem;
+                    color: #666;
+                    margin-bottom: 0.5rem;
+                }
+                
+                .kpi-subtitle {
+                    font-size: 0.875rem;
+                    color: #999;
+                }
+                
+                .chart-container {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    margin-bottom: 2rem;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+                
+                .chatbot-container {
+                    max-height: 600px;
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                .chat-messages {
+                    flex: 1;
+                    overflow-y: auto;
+                    max-height: 400px;
+                    border: 1px solid #dee2e6;
+                    border-radius: 8px;
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                }
+                
+                .message {
+                    margin-bottom: 1rem;
+                    padding: 0.75rem;
+                    border-radius: 8px;
+                }
+                
+                .user-message {
+                    background-color: #e3f2fd;
+                    margin-left: 2rem;
+                }
+                
+                .bot-message {
+                    background-color: #f5f5f5;
+                    margin-right: 2rem;
+                }
+                
+                .chat-input-container {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+                
+                .footer {
+                    background-color: #343a40;
+                    color: white;
+                    padding: 2rem 0;
+                    margin-top: 3rem;
+                    text-align: center;
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="container">
+                    <h1 class="display-4">✈️ Indian Airline Data Dashboard</h1>
+                    <p class="lead">Interactive analysis of airline performance across India</p>
+                    <small>Last updated: 2025-10-26 05:37:42</small>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="container">
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-tabs mb-4" id="dashboardTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            📊 Overview Dashboard
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="chatbot-tab" data-bs-toggle="tab" data-bs-target="#chatbot" type="button" role="tab">
+                            💬 AI Assistant
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- Tab Content -->
+                <div class="tab-content" id="dashboardTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <!-- KPI Cards -->
+                        
+        <div class="kpi-container">
+            <div class="kpi-card">
+                <div class="kpi-title">📊 Total Flights</div>
+                <div class="kpi-value">664,085</div>
+                <div class="kpi-subtitle">Across all airlines</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">⏰ On-Time Performance</div>
+                <div class="kpi-value">82.7%</div>
+                <div class="kpi-subtitle">Industry average</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">❌ Cancellation Rate</div>
+                <div class="kpi-value">3.12%</div>
+                <div class="kpi-subtitle">Industry average</div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-title">✈️ Airlines Tracked</div>
+                <div class="kpi-value">8</div>
+                <div class="kpi-subtitle">Major Indian carriers</div>
+            </div>
+        </div>
+        
+                        
+                        <!-- Charts and Tables -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+        <div class="chart-container">
+            <h3>📈 Airline Performance Rankings</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Rank</th>
+                            <th>Airline</th>
+                            <th>On-Time %</th>
+                            <th>Cancellation %</th>
+                            <th>Data Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><span class="badge bg-success">#1</span></td>
+                <td><strong>Vistara</strong></td>
+                <td>84.92%</td>
+                <td>3.11%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-primary">#2</span></td>
+                <td><strong>AirAsia India</strong></td>
+                <td>84.22%</td>
+                <td>3.11%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-primary">#3</span></td>
+                <td><strong>GoAir</strong></td>
+                <td>83.95%</td>
+                <td>3.14%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-secondary">#4</span></td>
+                <td><strong>SpiceJet</strong></td>
+                <td>82.51%</td>
+                <td>3.15%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-secondary">#5</span></td>
+                <td><strong>Air India</strong></td>
+                <td>82.33%</td>
+                <td>3.00%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-secondary">#6</span></td>
+                <td><strong>Alliance Air</strong></td>
+                <td>81.79%</td>
+                <td>3.12%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-secondary">#7</span></td>
+                <td><strong>Akasa Air</strong></td>
+                <td>81.44%</td>
+                <td>3.16%</td>
+                <td>60 months</td>
+            </tr>
+            
+            <tr>
+                <td><span class="badge bg-secondary">#8</span></td>
+                <td><strong>IndiGo</strong></td>
+                <td>81.35%</td>
+                <td>3.24%</td>
+                <td>60 months</td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                
+        <div class="chart-container">
+            <h3>⚠️ Delay Reasons Distribution</h3>
+            <div class="mt-3">
+                
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Ground Handling</strong></span>
+                    <span>76 (15.8%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 15.833333333333332%; background-color: #007bff"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Operational</strong></span>
+                    <span>71 (14.8%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 14.791666666666666%; background-color: #28a745"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Technical Issues</strong></span>
+                    <span>70 (14.6%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 14.583333333333334%; background-color: #dc3545"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Crew Issues</strong></span>
+                    <span>69 (14.4%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 14.374999999999998%; background-color: #ffc107"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Security</strong></span>
+                    <span>65 (13.5%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 13.541666666666666%; background-color: #17a2b8"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Weather</strong></span>
+                    <span>65 (13.5%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 13.541666666666666%; background-color: #6f42c1"></div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span><strong>Air Traffic Control</strong></span>
+                    <span>64 (13.3%)</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 13.333333333333334%; background-color: #e83e8c"></div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+                            </div>
+                            <div class="col-lg-6">
+                                
+        <div class="chart-container">
+            <h3>📅 Yearly Performance Trends</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Year</th>
+                            <th>Total Flights</th>
+                            <th>On-Time %</th>
+                            <th>Cancellation %</th>
+                            <th>Airlines</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><strong>2020</strong></td>
+                <td>135,459</td>
+                <td class="text-warning">83.0%</td>
+                <td>3.19%</td>
+                <td>96 airlines</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2021</strong></td>
+                <td>134,520</td>
+                <td class="text-warning">81.7%</td>
+                <td>2.91%</td>
+                <td>96 airlines</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2022</strong></td>
+                <td>131,013</td>
+                <td class="text-warning">81.5%</td>
+                <td>3.16%</td>
+                <td>96 airlines</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2023</strong></td>
+                <td>133,120</td>
+                <td class="text-warning">84.3%</td>
+                <td>3.11%</td>
+                <td>96 airlines</td>
+            </tr>
+            
+            <tr>
+                <td><strong>2024</strong></td>
+                <td>129,973</td>
+                <td class="text-warning">83.0%</td>
+                <td>3.22%</td>
+                <td>96 airlines</td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chatbot Tab -->
+                    <div class="tab-pane fade" id="chatbot" role="tabpanel">
+                        
+        <div class="chart-container">
+            <h3>💬 Airline Data Chatbot</h3>
+            <div class="chatbot-container">
+                <div id="chat-messages" class="chat-messages">
+                    <div class="message bot-message">
+                        <strong>AI Assistant:</strong> Hello! I can help you with Indian airline performance data. Click on a sample question below or type your own.
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6>Sample Questions:</h6>
+                    <button class="btn btn-outline-primary btn-sm m-1" onclick="askQuestion('What is the on-time performance of IndiGo?')">What is the on-time performance of IndiGo?</button><button class="btn btn-outline-primary btn-sm m-1" onclick="askQuestion('Which airline has the highest cancellation rate?')">Which airline has the highest cancellation rate?</button><button class="btn btn-outline-primary btn-sm m-1" onclick="askQuestion('What are the most common delay reasons?')">What are the most common delay reasons?</button><button class="btn btn-outline-primary btn-sm m-1" onclick="askQuestion('Show me performance trends for Air India')">Show me performance trends for Air India</button><button class="btn btn-outline-primary btn-sm m-1" onclick="askQuestion('Compare SpiceJet and Vistara performance')">Compare SpiceJet and Vistara performance</button>
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" class="chat-input form-control" placeholder="Ask about airline performance..." onkeypress="handleEnter(event)">
+                    <button class="chat-button btn btn-primary" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        function askQuestion(question) {
+            document.getElementById('chat-input').value = question;
+            sendMessage();
+        }
+        
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const query = input.value.trim();
+            
+            if (!query) return;
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user-message';
+            userMsg.innerHTML = '<strong>You:</strong> ' + query;
+            messages.appendChild(userMsg);
+            
+            // Add bot response
+            const botMsg = document.createElement('div');
+            botMsg.className = 'message bot-message';
+            botMsg.innerHTML = '<strong>AI Assistant:</strong> ' + getResponse(query);
+            messages.appendChild(botMsg);
+            
+            // Clear input and scroll to bottom
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+        }
+        
+        function getResponse(query) {
+            const q = query.toLowerCase();
+            
+            // Simple rule-based responses
+            if (q.includes('indigo')) {
+                return 'IndiGo is one of the top-performing airlines with an average on-time performance of around 84-86%. It has relatively low cancellation rates compared to industry average.';
+            }
+            else if (q.includes('spicejet')) {
+                return 'SpiceJet has an average on-time performance of around 82-84%. It operates a significant number of domestic flights across India.';
+            }
+            else if (q.includes('air india')) {
+                return 'Air India has an average on-time performance of around 81-83%. As the national carrier, it operates both domestic and international routes.';
+            }
+            else if (q.includes('vistara')) {
+                return 'Vistara consistently ranks among the top performers with excellent on-time performance of around 84-85% and premium service quality.';
+            }
+            else if (q.includes('cancel')) {
+                return 'The overall cancellation rate across Indian airlines is approximately 3.1%. Weather and operational issues are common causes.';
+            }
+            else if (q.includes('delay')) {
+                return 'Common delay reasons include ground handling issues, operational delays, technical problems, and weather conditions. Ground handling is typically the most frequent cause.';
+            }
+            else if (q.includes('performance') || q.includes('on-time')) {
+                return 'The overall on-time performance across Indian airlines is approximately 82.7%. Premium carriers like Vistara typically perform better than budget airlines.';
+            }
+            else if (q.includes('compare')) {
+                return 'Among major airlines, Vistara and IndiGo typically have the best on-time performance, while budget carriers may have slightly higher delay rates but remain competitive overall.';
+            }
+            else if (q.includes('trend')) {
+                return 'Airline performance varies by season, with monsoon months typically showing higher delay rates. The industry has generally improved post-pandemic recovery.';
+            }
+            else {
+                return 'I can help with questions about airline performance, delays, cancellations, and comparisons. Try asking about specific airlines like IndiGo, SpiceJet, Air India, or Vistara.';
+            }
+        }
+        </script>
+        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="container">
+                    <p>&copy; 2024 Indian Airline Dashboard | Built with HTML, CSS, and JavaScript</p>
+                    <p>Data covers 480 records from 8 airlines</p>
+                </div>
+            </div>
+            
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+        </html>
+        

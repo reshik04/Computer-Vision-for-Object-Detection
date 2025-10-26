@@ -1,27 +1,118 @@
-# Object Detection Project
+# Indian Airline Data Dashboard
 
-## Project Description
-This project uses the YOLO (You Only Look Once) model for object detection. The model is capable of detecting objects in images and drawing bounding boxes around them.
+## Project Overview
+An interactive web-based dashboard and chatbot for analyzing and visualizing Indian airline performance data. Built with Plotly Dash and designed for deployment on Vercel.
 
-## Dependencies
-- Python 3.7 or later
-- OpenCV
-- NumPy
+## Features
+- **Interactive Dashboard**: Multi-page dashboard with KPIs, time-series charts, and comparative visualizations
+- **Rule-based Chatbot**: Simple chatbot interface for querying airline performance data
+- **Data Consolidation**: Robust system for handling multiple Excel data sources
+- **Responsive Design**: Works across different screen sizes and devices
 
-## Files
-- `object_detection.py`: This is the main script that performs object detection.
+## Technical Stack
+- **Backend/Dashboard**: Plotly Dash (Python)
+- **Hosting**: Vercel (serverless functions)
+- **Data Processing**: Pandas
+- **Visualization**: Plotly
+- **Version Control**: Git & GitHub
 
-## Setup and Installation
-1. Clone this repository to your local machine.
-2. Install the required dependencies: `pip install opencv-python numpy`
-3. Download the YOLO weights and cfg file from the official YOLO website and place them in the same directory as the script.
-4. Run the script with a command like `python object_detection.py`.
+## Project Structure
+```
+├── dashboard/
+│   ├── app.py              # Main Dash application
+│   ├── components/         # Reusable dashboard components
+│   └── pages/             # Multi-page dashboard modules
+├── data/                  # Data files and processing
+│   ├── raw/              # Original Excel files
+│   ├── processed/        # Cleaned and consolidated data
+│   └── data_processor.py # Data ingestion and preprocessing
+├── utils/                # Utility functions
+├── requirements.txt      # Python dependencies
+├── vercel.json          # Vercel deployment configuration
+└── README.md            # This file
+```
 
-## Usage
-Replace `"image.jpg"` in the script with the path to the image you want to detect objects in. The script will display the image with bounding boxes around detected objects. Press any key to close the window.
+## Modules
+
+### Module 1: Data Ingestion & Consolidation
+Loads and consolidates multiple Excel files containing Indian airline performance metrics into a single pandas DataFrame.
+
+### Module 2: Data Preprocessing & Feature Engineering
+- Standardizes column names
+- Handles missing values
+- Creates derived metrics (OnTimePercentage, CancellationRate)
+- Implements time-series indexing
+
+### Module 3: Interactive Dashboard
+**Page 1: Overview Dashboard**
+- KPI cards with key performance metrics
+- Time-series charts with airline filtering
+- Comparative bar charts
+- Delay/cancellation reason pie charts
+
+**Page 2: Chatbot Interface**
+- Rule-based query system
+- Pre-programmed responses for common questions
+- Interactive chat interface
+
+### Module 4: Deployment & Documentation
+- Vercel-ready configuration
+- Comprehensive documentation
+- Git repository setup
+
+## Installation & Setup
+
+### Local Development
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd indian-airline-dashboard
+   ```
+
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the application:
+   ```bash
+   python dashboard/app.py
+   ```
+
+5. Open your browser to `http://localhost:8050`
+
+### Deployment
+The application is configured for automatic deployment to Vercel when connected to a GitHub repository.
+
+## Data Sources
+This project works with Indian airline performance datasets containing metrics such as:
+- On-time arrivals and departures
+- Flight cancellations
+- Delay reasons and durations
+- Airline-specific performance indicators
+
+## Key Insights
+The dashboard provides insights into:
+- Overall airline industry performance trends
+- Comparative analysis between different airlines
+- Seasonal patterns in delays and cancellations
+- Most common reasons for flight disruptions
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Create a Pull Request
 
 ## License
-MIT
+MIT License - see LICENSE file for details
+
+## Contact
+For questions or support, please open an issue in the GitHub repository.
